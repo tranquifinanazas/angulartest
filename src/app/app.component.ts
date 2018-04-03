@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { User } from './user';
+import { USERS } from './mock-users';
+import { all } from 'q';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +9,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  activeUsers = ['Max', 'Anna'];
-  inactiveUsers = ['Chris', 'Manu'];
+  allUsers = USERS;
+  activeUsers = [];
+  inactiveUsers = [];
+
+  ngOnInit(){
+    this.sortUsers();
+  }
+
+  sortUsers(): void {
+    for (const user of this.allUsers) {
+      if (user.isActive) {
+        this.activeUsers.push(user.name)
+      }
+      else{
+        this.inactiveUsers.push(user.name)
+      }
+    }
+  }
+
 
   onSetToInactive(id: number) {
     this.inactiveUsers.push(this.activeUsers[id]);
