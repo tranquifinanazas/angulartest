@@ -1,4 +1,9 @@
-# N5CompleteGuide
+# Tranqui Test
+
+In this project there are 2 components, ActiveUsers and InactiveUsers, using services change the way this components comunicate each other, to create a simpler approach.
+
+## Note: 
+Provide here code snippets, or send your solved .zip project to andres@tranquifinanzas.com, either case, explain here, Why did you choose the approach you took?
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
