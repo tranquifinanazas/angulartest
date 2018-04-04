@@ -9,13 +9,18 @@ import { UserService } from './user.service';
 })
 export class AppComponent {
 
-  // onSetToInactive(id: number) {
-  //   this.inactiveUsers.push(this.activeUsers[id]);
-  //   this.activeUsers.splice(id, 1);
-  // }
+  constructor(private userService: UserService) { }
 
-  // onSetToActive(id: number) {
-  //   this.activeUsers.push(this.inactiveUsers[id]);
-  //   this.inactiveUsers.splice(id, 1);
-  // }
+  ngOnInit(){
+    this.getAllUsers();
+  }
+
+  allUsers: User[];
+
+  // Get all users
+  getAllUsers(): void {
+    this.userService.getAllUsers()
+        .subscribe(allUsers => this.allUsers = allUsers);
+  }
+
 }

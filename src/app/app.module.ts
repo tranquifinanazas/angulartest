@@ -8,12 +8,15 @@ import { ActiveUsersComponent } from './active-users/active-users.component';
 import { InactiveUsersComponent } from './inactive-users/inactive-users.component';
 
 import { UserService } from './user.service';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ActiveUsersComponent,
-    InactiveUsersComponent
+    InactiveUsersComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +25,7 @@ import { UserService } from './user.service';
   ],
   providers: [
     UserService,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

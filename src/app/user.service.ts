@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
+
 import { User } from './user';
 import { USERS } from './mock-users';
+
+import { MessageService } from './message.service';
+
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+
 
 
 @Injectable()
 export class UserService {
 
-  activeUsers = [];
-  inactiveUsers = [];
+  public activeUsers = [];
+  public inactiveUsers = [];
   
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
-  getAllUsers(): User[] {
-    return USERS;
+  getAllUsers(): Observable<User[]> {
+    this.messageService.add('User message: fetched all users')
+    return of(USERS);
   }
 
   getActiveUsers(): Array<Object>[] {
@@ -31,6 +39,15 @@ export class UserService {
       }
     }
     return this.inactiveUsers;
+  }
+
+  onSetToInactive(id: number) {
+    this.inactiveUsers.push(this.activeUsers[id]);
+    this.activeUsers.splice(id, 1);
+  }
+  onSetToActive(id: number) {
+    this.activeUsers.push(this.inactiveUsers[id]);
+    this.inactiveUsers.splice(id, 1);
   }
 
 
